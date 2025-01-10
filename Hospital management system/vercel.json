@@ -3,7 +3,7 @@
     "name": "Hospital_Management_System",
     "builds": [
         {
-            "src": "./index.js",
+            "src": "./server.js",
             "use": "@vercel/node"
         }
     ],

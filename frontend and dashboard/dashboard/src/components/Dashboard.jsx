@@ -72,7 +72,7 @@ const Dashboard = () => {
           <div className="secondBox">
             <p>Total Appointments</p>
 
-            <h3>{appointments.length}</h3>
+            {/* <h3>{appointments.length}</h3> */}
 
           </div>
           {/* <div className="thirdBox">
