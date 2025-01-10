@@ -14,7 +14,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
       try {
         const { data } = await axios.get(
-          "hospital-management-system-sandy-xi.vercel.app/api/v1/appointment/getall",
+          "https://hospital-management-system-leq2.vercel.app/api/v1/appointment/getall",
           { withCredentials: true }
         );
         setAppointments(data.appointments);
@@ -28,7 +28,7 @@ const Dashboard = () => {
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
       const { data } = await axios.put(
-        `hospital-management-system-sandy-xi.vercel.app/api/v1/appointment/update/${appointmentId}`,
+        `https://hospital-management-system-leq2.vercel.app/api/v1/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );
@@ -72,7 +72,7 @@ const Dashboard = () => {
           <div className="secondBox">
             <p>Total Appointments</p>
 
-            {/* <h3>{appointments.length}</h3> */}
+            <h3>{appointments.length}</h3>
 
           </div>
           {/* <div className="thirdBox">

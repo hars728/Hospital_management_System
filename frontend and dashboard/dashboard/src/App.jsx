@@ -17,11 +17,12 @@ const App = () => {
   const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
     useContext(Context);
 
+  // Fetch user info once when the component is mounted
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "hospital-management-system-sandy-xi.vercel.app/api/v1/user/admin/me",
+          "https://hospital-management-system-leq2.vercel.app/api/v1/user/admin/me", // Added https://
           {
             withCredentials: true,
           }
@@ -34,11 +35,11 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [isAuthenticated]);
+  }, []); // Only run once on mount
 
   return (
     <Router>
-      <Sidebar />
+      {isAuthenticated && <Sidebar />} {/* Only show Sidebar when authenticated */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />

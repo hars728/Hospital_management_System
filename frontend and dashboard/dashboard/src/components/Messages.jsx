@@ -11,7 +11,7 @@ const Messages = () => {
     const fetchMessages = async () => {
       try {
         const { data } = await axios.get(
-          "hospital-management-system-sandy-xi.vercel.app/api/v1/message/getall",
+          "https://hospital-management-system-leq2.vercel.app/api/v1/message/getall",
           { withCredentials: true }
         );
         setMessages(data.messages);

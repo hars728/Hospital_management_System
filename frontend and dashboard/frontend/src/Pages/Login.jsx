@@ -18,7 +18,7 @@ const Login = () => {
     try {
       await axios
         .post(
-          "hospital-management-system-sandy-xi.vercel.app/api/v1/user/login",
+          "hospital-management-system-leq2.vercel.app/api/v1/user/login",
           { email, password, confirmPassword, role: "Patient" },
           {
             withCredentials: true,

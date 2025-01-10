@@ -11,7 +11,7 @@ const Doctors = () => {
     const fetchDoctors = async () => {
       try {
         const { data } = await axios.get(
-          "hospital-management-system-sandy-xi.vercel.app/api/v1/user/doctors",
+          "https://hospital-management-system-leq2.vercel.app/api/v1/user/doctors",
           { withCredentials: true }
         );
         setDoctors(data.doctors);
