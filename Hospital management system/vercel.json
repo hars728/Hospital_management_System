@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "Hospital_Management_System",
+    "name": "Hospital_ment_stm",
     "builds": [
         {
             "src": "./server.js",
