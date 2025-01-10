@@ -12,6 +12,10 @@ import appointmentRouter from "./router/appointmentRouter.js";
 const app = express();
 config({ path: "./config/config.env" });
 
+app.get("/", (req, res) => {
+    res.json({ message: "Hello Harsh" });
+});
+
 app.use(
     cors({
         origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO],
