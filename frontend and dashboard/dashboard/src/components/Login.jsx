@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Context } from "../main";
@@ -16,37 +16,37 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://hospital-management-system-leq2.vercel.app/api/v1/user/login",
-        { email, password, role: "Admin" },
-        {
-          withCredentials: true,  // Make sure credentials (cookies) are included with the request
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      toast.success(response.data.message); // Display success message
-      setIsAuthenticated(true); // Set authentication status
-      navigateTo("/"); // Redirect to home or dashboard page
-      setEmail(""); // Reset email
-      setPassword(""); // Reset password
-      setConfirmPassword(""); // Reset confirm password
+      await axios
+        .post(
+          "https://hospital-management-system-leq2.vercel.app/api/v1/user/login",
+          { email, password, confirmPassword, role: "Admin" },
+          {
+            withCredentials: true,
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then((res) => {
+          toast.success(res.data.message);
+          setIsAuthenticated(true);
+          navigateTo("/");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+        });
     } catch (error) {
-      // Ensure proper error handling
-      const errorMessage =
-        error.response?.data?.message || "An error occurred. Please try again."; // Fallback error message
-      toast.error(errorMessage); // Display error message
+      toast.error(error.response.data.message);
     }
   };
 
   if (isAuthenticated) {
-    return <Navigate to={"/"} />; // If authenticated, redirect to home/dashboard
+    return <Navigate to={"/"} />;
   }
 
   return (
     <>
       <section className="container form-component">
         <img src="/logo.png" alt="logo" className="logo" />
-        <h1 className="form-title">WELCOME TO SatyaCare</h1>
+        <h1 className="form-title">WELCOME TO ZEECARE</h1>
         <p>Only Admins Are Allowed To Access These Resources!</p>
         <form onSubmit={handleLogin}>
           <input
@@ -77,3 +77,4 @@ const Login = () => {
 };
 
 export default Login;
+

@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 app.use(
     cors({
         origin: ["http://localhost:5173", "http://localhost:5174"], // Allow frontend URLs
-        methods: ["GET", "POST", "DELETE", "PUT"],
+        method: ["GET", "POST", "DELETE", "PUT"],
         credentials: true,  // Allow credentials (cookies) to be sent with requests
     })
 );
