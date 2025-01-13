@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.use(
     cors({
-        origin: ["http://localhost:5173", "http://localhost:5174"], // Allow frontend URLs
+        origin: ["http://localhost:5173", "http://localhost:5174https://hospital-management-system-pi-six.vercel.app"], // Allow frontend URLs
         method: ["GET", "POST", "DELETE", "PUT"],
         credentials: true,  // Allow credentials (cookies) to be sent with requests
     })
