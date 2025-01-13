@@ -16,30 +16,30 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios
-        .post(
-          "https://hospital-management-system-leq2.vercel.app/api/v1/user/login",
-          { email, password, confirmPassword, role: "Admin" },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
-        )
-        .then((res) => {
-          toast.success(res.data.message);
-          setIsAuthenticated(true);
-          navigateTo("/");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-        });
+      const response = await axios.post(
+        "https://hospital-management-system-leq2.vercel.app/api/v1/user/login",
+        { email, password, role: "Admin" },
+        {
+          withCredentials: true,  // Make sure credentials (cookies) are included with the request
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      toast.success(response.data.message); // Display success message
+      setIsAuthenticated(true); // Set authentication status
+      navigateTo("/"); // Redirect to home or dashboard page
+      setEmail(""); // Reset email
+      setPassword(""); // Reset password
+      setConfirmPassword(""); // Reset confirm password
     } catch (error) {
-      toast.error(error.response.data.message);
+      // Ensure proper error handling
+      const errorMessage =
+        error.response?.data?.message || "An error occurred. Please try again."; // Fallback error message
+      toast.error(errorMessage); // Display error message
     }
   };
 
   if (isAuthenticated) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/"} />; // If authenticated, redirect to home/dashboard
   }
 
   return (
