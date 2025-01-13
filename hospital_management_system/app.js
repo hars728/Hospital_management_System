@@ -18,9 +18,9 @@ app.get("/", (req, res) => {
 
 app.use(
     cors({
-        origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO],
-        method: ["GET", "POST", "DELETE", "PUT"],
-        withCredentials: true,
+        origin: ["http://localhost:5173", process.env.FRONTEND_URL_TWO], // Allow frontend URLs
+        methods: ["GET", "POST", "DELETE", "PUT"],
+        credentials: true,  // Allow credentials (cookies) to be sent with requests
     })
 );
 
@@ -34,6 +34,7 @@ app.use(
         tempFileDir: "/tmp/",
     })
 );
+
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
@@ -41,4 +42,5 @@ app.use("/api/v1/appointment", appointmentRouter);
 dbConnection();
 
 app.use(errorMiddleware);
+
 export default app;
