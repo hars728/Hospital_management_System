@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <Router>
-      {isAuthenticated && <Sidebar />} {/* Only show Sidebar when authenticated */}
+      {<Sidebar />} {/* Only show Sidebar when authenticated */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
@@ -54,3 +54,9 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
+"https://hospital-management-system-leq2.vercel.app/api/v1/user/admin/me"
